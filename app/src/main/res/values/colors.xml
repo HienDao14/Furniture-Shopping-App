@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="primary">#242424</color>
+    <color name="text_secondary">#808080</color>
+    <color name="place_holder">#B3B3B3</color>
+    <color name="secondary_button_bg">#F0F0F0</color>
+    <color name="disable_button">#999999</color>
+    <color name="disable_field">#F5F5F5</color>
+    <color name="success">#27AE60</color>
+    <color name="stroke_divider">#DBDBDB</color>
+    <color name="edt_color">#E0E0E0</color>
+</resources>

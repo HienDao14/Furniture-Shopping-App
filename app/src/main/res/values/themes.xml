@@ -1,0 +1,12 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.FurnitureShoppingApp" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+         <item name="colorPrimary">@color/primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        <item name="placeholderTextColor">@color/place_holder</item>
+
+    </style>
+
+    <style name="Theme.FurnitureShoppingApp" parent="Base.Theme.FurnitureShoppingApp" />
+</resources>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "40420451413",
+    "project_id": "furnitureshoppingapp-7dd2c",
+    "storage_bucket": "furnitureshoppingapp-7dd2c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:40420451413:android:d5117329d15aac2e8ba0dc",
+        "android_client_info": {
+          "package_name": "com.example.furnitureshoppingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBc3fE0whkMeLNvn8f_4THHG35Qf8X1rI4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
