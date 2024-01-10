@@ -104,6 +104,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            android:id="@+id/tv_forgot_password"
             style="@style/h2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -114,13 +115,14 @@
             android:text="@string/forgot_password"
             android:textColor="@color/primary" />
 
-        <Button
+        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/blackButtonStyle"
             android:text="@string/log_in"
             android:gravity="center"
+            android:layout_gravity="center"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"/>
 
@@ -133,7 +135,7 @@
                 android:id="@+id/tv_or"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Or"
+                android:text="@string/or"
                 style="@style/h2"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
