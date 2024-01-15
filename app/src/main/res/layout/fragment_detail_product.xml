@@ -95,31 +95,32 @@
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        android:gravity="center"
         app:layout_constraintTop_toTopOf="@id/tv_detail_product_price"
         app:layout_constraintBottom_toBottomOf="@id/tv_detail_product_price"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="40dp">
 
         <ImageView
-            android:id="@+id/iv_add"
+            android:id="@+id/iv_subtract"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:src="@drawable/ic_subtract"
             android:layout_gravity="center"/>
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/tv_count"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
             android:text="01"
             style="@style/h3"
-            android:layout_gravity="center"
+            android:textAlignment="gravity"
+            android:gravity="center"
             android:textColor="@color/primary"
             android:layout_marginHorizontal="20dp"/>
 
         <ImageView
-            android:id="@+id/iv_subtract"
+            android:id="@+id/iv_add"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:src="@drawable/ic_add"/>
     </LinearLayout>
@@ -153,7 +154,7 @@
     <ImageView
         android:id="@+id/iv_add_to_favorite"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:src="@drawable/frame_61"
         android:background="@drawable/favorite_corner"
         app:layout_constraintTop_toTopOf="@id/btn_add_to_cart"
