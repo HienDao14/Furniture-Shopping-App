@@ -8,6 +8,7 @@
     tools:context=".activity.ShoppingActivity"
     android:orientation="vertical">
 
+
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/shopping_nav_host"
         android:layout_width="match_parent"
@@ -23,7 +24,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         style="@style/Widget.App.BottomNavigationView"
         app:menu="@menu/bottom_menu"
         app:labelVisibilityMode="unlabeled"
