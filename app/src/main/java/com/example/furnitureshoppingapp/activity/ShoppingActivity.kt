@@ -40,6 +40,8 @@ class ShoppingActivity : AppCompatActivity() {
             ) {
                 if(destination.label == "fragment_detail_product"){
                     binding.bottomNav.visibility = View.GONE
+                } else{
+                    binding.bottomNav.visibility = View.VISIBLE
                 }
             }
         })
