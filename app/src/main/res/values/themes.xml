@@ -4,9 +4,17 @@
         <!-- Customize your light theme here. -->
          <item name="colorPrimary">@color/primary</item>
         <item name="android:textColorSecondary">@color/text_secondary</item>
-        <item name="placeholderTextColor">@color/place_holder</item>
-
     </style>
 
     <style name="Theme.FurnitureShoppingApp" parent="Base.Theme.FurnitureShoppingApp" />
+
+    <style name="Widget.App.TabLayout" parent="Widget.Material3.TabLayout">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.TabLayout</item>
+    </style>
+
+    <style name="ThemeOverlay.App.TabLayout" parent="">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnSurface">@color/primary</item>
+    </style>
+
 </resources>
