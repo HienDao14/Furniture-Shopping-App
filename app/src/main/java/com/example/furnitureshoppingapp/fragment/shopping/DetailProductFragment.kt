@@ -21,20 +21,22 @@ import com.example.furnitureshoppingapp.databinding.FragmentDetailProductBinding
 import com.example.furnitureshoppingapp.model.CartProduct
 import com.example.furnitureshoppingapp.model.Product
 import com.example.furnitureshoppingapp.resources.Resources
+import com.example.furnitureshoppingapp.util.Constants.showTopSnackbar
 import com.example.furnitureshoppingapp.viewmodel.DetailViewModel
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
 class DetailProductFragment : Fragment() {
     private val navArgs by navArgs<DetailProductFragmentArgs>()
     private lateinit var binding: FragmentDetailProductBinding
-    private val viewPagerAdapter by lazy{ ViewPager2ImageAdapter() }
-    private val colorAdapter by lazy{ ColorAdapter() }
-    private lateinit var product : Product
+    private val viewPagerAdapter by lazy { ViewPager2ImageAdapter() }
+    private val colorAdapter by lazy { ColorAdapter() }
+    private lateinit var product: Product
     private var selectedColor: String? = null
     private val viewModel by viewModels<DetailViewModel>()
     override fun onCreateView(
@@ -68,11 +70,13 @@ class DetailProductFragment : Fragment() {
         }
 
         binding.ivAdd.setOnClickListener {
-            binding.tvCount.text = String.format("%02d", (binding.tvCount.text.toString().toInt() + 1))
+            binding.tvCount.text =
+                String.format("%02d", (binding.tvCount.text.toString().toInt() + 1))
         }
         binding.ivSubtract.setOnClickListener {
-            if(binding.tvCount.text.toString().toInt() > 1){
-                binding.tvCount.text = String.format("%02d", (binding.tvCount.text.toString().toInt() - 1))
+            if (binding.tvCount.text.toString().toInt() > 1) {
+                binding.tvCount.text =
+                    String.format("%02d", (binding.tvCount.text.toString().toInt() - 1))
             }
         }
         binding.btnAddToCart.setOnClickListener {
@@ -81,15 +85,47 @@ class DetailProductFragment : Fragment() {
         }
         lifecycleScope.launchWhenStarted {
             viewModel.addToCart.collectLatest {
-                when(it){
+                when (it) {
                     is Resources.Loading -> {
                     }
+
                     is Resources.Success -> {
-                        showTopSnackbar("Added ${it.data!!.quantity} products to cart!!!")
+                        showTopSnackbar("Added product to cart!!!", requireView(), resources)
                     }
+
                     is Resources.Error -> {
-                        showTopSnackbar(it.message.toString())
+                        showTopSnackbar(it.message.toString(), requireView(), resources)
                     }
+
+                    else -> Unit
+                }
+            }
+        }
+        lifecycleScope.launchWhenStarted {
+            viewModel.checkInFavorite.collectLatest {
+                if(it){
+                    showTopSnackbar("Already in favorite", requireView(), resources)
+                } else Unit
+            }
+        }
+        binding.btnAddToFavorite.setOnClickListener {
+                viewModel.addProductToFavorite(product)
+        }
+
+        lifecycleScope.launchWhenStarted {
+            viewModel.addToFavorite.collectLatest {
+                when (it) {
+                    is Resources.Loading -> {
+                    }
+
+                    is Resources.Success -> {
+                        showTopSnackbar("Added product to favorite!!!", requireView(), resources)
+                    }
+
+                    is Resources.Error -> {
+                        showTopSnackbar(it.message.toString(), requireView(), resources)
+                    }
+
                     else -> Unit
                 }
             }
@@ -97,9 +133,9 @@ class DetailProductFragment : Fragment() {
     }
 
     private fun bindView() {
-        binding.apply{
+        binding.apply {
             tvDetailProductName.text = product.name
-            if(product.offerPercentage!! > 0){
+            if (product.offerPercentage!! > 0) {
                 val currentPrice = product.price * (1 - product.offerPercentage!! / 100)
                 tvDetailProductOldPrice.visibility = View.VISIBLE
                 tvDetailProductOldPrice.text = "$ ${product.price}"
@@ -112,14 +148,4 @@ class DetailProductFragment : Fragment() {
         }
     }
 
-    private fun showTopSnackbar(message: String) {
-        val snackbar = Snackbar.make(requireView(), message, Snackbar.LENGTH_SHORT)
-        val view = snackbar.view
-        val params = view.layoutParams as FrameLayout.LayoutParams
-        params.gravity = Gravity.TOP
-        params.topMargin = resources.getDimension(R.dimen.edt_height).toInt()
-        view.layoutParams = params
-        snackbar.animationMode = BaseTransientBottomBar.ANIMATION_MODE_FADE
-        snackbar.show()
-    }
 }

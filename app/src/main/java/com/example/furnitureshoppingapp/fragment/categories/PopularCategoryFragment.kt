@@ -21,6 +21,7 @@ import com.example.furnitureshoppingapp.adapter.SpecialAdapter
 import com.example.furnitureshoppingapp.databinding.FragmentPopularCategoryBinding
 import com.example.furnitureshoppingapp.model.Product
 import com.example.furnitureshoppingapp.resources.Resources
+import com.example.furnitureshoppingapp.util.Constants.showTopSnackbar
 import com.example.furnitureshoppingapp.viewmodel.PopularCategoryViewModel
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -84,7 +85,7 @@ class PopularCategoryFragment : Fragment() {
             viewModel.popularProduct.collectLatest {
                 when(it){
                     is Resources.Loading ->{
-                        showTopSnackbar()
+                        showTopSnackbar("Loading products...", requireView(), resources)
                     }
                     is Resources.Success -> {
                         productAdapter.differ.submitList(it.data)
@@ -116,17 +117,6 @@ class PopularCategoryFragment : Fragment() {
                 viewModel.callGetProducts()
             }
         })
-    }
-
-    private fun showTopSnackbar() {
-        val snackbar = Snackbar.make(requireView(), "Loading products...", 10)
-        val view = snackbar.view
-        val params = view.layoutParams as FrameLayout.LayoutParams
-        params.gravity = Gravity.TOP
-        params.topMargin = resources.getDimension(R.dimen.edt_height).toInt()
-        view.layoutParams = params
-        snackbar.animationMode = BaseTransientBottomBar.ANIMATION_MODE_FADE
-        snackbar.show()
     }
 
     private fun hideLoading() {

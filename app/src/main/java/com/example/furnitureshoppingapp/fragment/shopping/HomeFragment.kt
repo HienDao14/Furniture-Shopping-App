@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 import com.example.furnitureshoppingapp.R
 import com.example.furnitureshoppingapp.adapter.HomeViewPagerAdapter
 import com.example.furnitureshoppingapp.databinding.FragmentHomeBinding
@@ -60,5 +61,15 @@ class HomeFragment : Fragment() {
             }
         }.attach()
         binding.viewPagerHome.isUserInputEnabled = false
+
+        binding.homeTopAppBar.setOnMenuItemClickListener {
+            if(it.itemId == R.id.cartFragment){
+                findNavController().navigate(R.id.action_homeFragment_to_cartFragment)
+            }
+            true
+        }
+        binding.homeTopAppBar.setNavigationOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+        }
     }
 }

@@ -49,4 +49,5 @@
     <string name="promo_code">Enter your promo code</string>
     <string name="color">Color:</string>
     <string name="empty_cart_message">Your cart is empty!\nLook like you haven\'t added anything to your cart yet!</string>
+    <string name="add_all_to_cart">Add all to my cart</string>
 </resources>

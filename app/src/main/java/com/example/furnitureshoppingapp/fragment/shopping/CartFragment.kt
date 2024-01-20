@@ -17,7 +17,9 @@ import com.example.furnitureshoppingapp.adapter.CartAdapter
 import com.example.furnitureshoppingapp.databinding.FragmentCartBinding
 import com.example.furnitureshoppingapp.firebase.FirebaseCommon
 import com.example.furnitureshoppingapp.model.Product
+import com.example.furnitureshoppingapp.model.Voucher
 import com.example.furnitureshoppingapp.resources.Resources
+import com.example.furnitureshoppingapp.util.Constants.showTopSnackbar
 import com.example.furnitureshoppingapp.viewmodel.CartViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -27,7 +29,9 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class CartFragment : Fragment() {
     private lateinit var binding: FragmentCartBinding
+    private val listVoucher : ArrayList<Voucher> = ArrayList()
     private val viewModel by viewModels<CartViewModel>()
+    var totalPrice : Float = 0f
     private val cartAdapter: CartAdapter by lazy { CartAdapter() }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,13 +49,23 @@ class CartFragment : Fragment() {
             adapter = cartAdapter
         }
 
+        setOnLayoutClick()
         setOnItemClick()
 
         lifecycleScope.launch {
             viewModel.totalPrice.collectLatest {price ->
                 price?.let {
-                    val price = String.format("%.2f", it)
-                    binding.tvTotalPrice.text = "$ $price"
+                    totalPrice = it
+                    val total = String.format("%.2f", it)
+                    binding.tvTotalPrice.text = "$ $total"
+                }
+            }
+        }
+
+        lifecycleScope.launch {
+            viewModel.voucher.collectLatest {vouchers ->
+                vouchers.data?.let {
+                    listVoucher.addAll(it)
                 }
             }
         }
@@ -100,6 +114,33 @@ class CartFragment : Fragment() {
             }
         }
     }
+    private fun setOnLayoutClick() {
+        binding.topAppBar.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
+        binding.btnCheckVoucher.setOnClickListener{
+            val voucherText = binding.edtVoucher.text.toString()
+            listVoucher.forEach {voucher ->
+                if(voucherText.lowercase() == voucher.text.lowercase()){
+                    binding.tvDiscountApply.visibility = View.VISIBLE
+                    binding.tvDiscountApply.text = "Apply voucher successfully!!!\nYou save ${voucher.discount} ${voucher.unit} for your bill!!!"
+                    var price = totalPrice
+                    if(voucher.unit == "%"){
+                        price -= price * voucher.discount / 100
+                    } else {
+                        price -= voucher.discount
+                        if(price < 0) price = 0f
+                    }
+                    val textTotal = String.format("%.2f", price)
+                    binding.tvTotalPrice.text = "$ $textTotal"
+                    showTopSnackbar("Your voucher added successfully!!!", requireView(), resources)
+                    return@setOnClickListener
+                }
+            }
+            binding.tvDiscountApply.visibility = View.GONE
+            showTopSnackbar("Your voucher is not available or is outdated", requireView(), resources)
+        }
+    }
 
     private fun setOnItemClick() {
         cartAdapter.onProductClick = {
@@ -111,6 +152,9 @@ class CartFragment : Fragment() {
         cartAdapter.onDecreaseClick = {
             viewModel.changeQuantity(it, FirebaseCommon.QuantityChanging.DECREASE)
         }
+        cartAdapter.onDeleteClick = {
+            viewModel.callDeleteProduct(it)
+        }
     }
 
     private fun hideEmptyCart() {
@@ -119,7 +163,7 @@ class CartFragment : Fragment() {
         binding.tvTotal.visibility = View.VISIBLE
         binding.tvTotalPrice.visibility = View.VISIBLE
         binding.btnCheckOut.visibility = View.VISIBLE
-        binding.btnCheckPromo.visibility = View.VISIBLE
+        binding.btnCheckVoucher.visibility = View.VISIBLE
         binding.emptyLayout.visibility = View.GONE
     }
 
@@ -129,7 +173,7 @@ class CartFragment : Fragment() {
         binding.tvTotal.visibility = View.GONE
         binding.tvTotalPrice.visibility = View.GONE
         binding.btnCheckOut.visibility = View.GONE
-        binding.btnCheckPromo.visibility = View.GONE
+        binding.btnCheckVoucher.visibility = View.GONE
         binding.emptyLayout.visibility = View.VISIBLE
     }
 
