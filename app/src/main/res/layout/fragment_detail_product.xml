@@ -149,13 +149,14 @@
         android:layout_marginBottom="10dp"
         android:layout_marginStart="20dp"
         app:layout_constraintEnd_toEndOf="@id/linear_layout"
-        app:layout_constraintStart_toEndOf="@id/iv_add_to_favorite"
+        app:layout_constraintStart_toEndOf="@id/btn_add_to_favorite"
         app:layout_constraintBottom_toBottomOf="parent" />
     <ImageView
-        android:id="@+id/iv_add_to_favorite"
+        android:id="@+id/btn_add_to_favorite"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:src="@drawable/frame_61"
+        android:clickable="true"
         android:background="@drawable/favorite_corner"
         app:layout_constraintTop_toTopOf="@id/btn_add_to_cart"
         app:layout_constraintStart_toStartOf="@id/tv_detail_product_price"

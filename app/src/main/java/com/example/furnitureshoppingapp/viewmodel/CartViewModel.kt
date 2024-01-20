@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.furnitureshoppingapp.firebase.FirebaseCommon
 import com.example.furnitureshoppingapp.model.CartProduct
+import com.example.furnitureshoppingapp.model.Voucher
 import com.example.furnitureshoppingapp.resources.Resources
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentSnapshot
@@ -30,9 +31,13 @@ class CartViewModel @Inject constructor(
     private val _deleteDialog = MutableSharedFlow<CartProduct>()
     val deleteDialog = _deleteDialog.asSharedFlow()
 
+    private val _voucher = MutableStateFlow<Resources<List<Voucher>>>(Resources.Unspecified())
+    val voucher = _voucher.asStateFlow()
+
     private var documents = emptyList<DocumentSnapshot>()
     init {
         getCartItem()
+        getAllVoucher()
     }
 
     val totalPrice = cartItem.map{
@@ -87,6 +92,12 @@ class CartViewModel @Inject constructor(
         }
     }
 
+    fun callDeleteProduct(cartProduct: CartProduct){
+        viewModelScope.launch {
+            _deleteDialog.emit(cartProduct)
+        }
+    }
+
     private fun decreaseQuantity(documentId: String) {
         firebaseCommon.decreaseQuantity(documentId, 1){_, e ->
             if(e != null){
@@ -132,6 +143,24 @@ class CartViewModel @Inject constructor(
                     viewModelScope.launch {
                         _cartItem.emit(Resources.Success(cartProducts))
                     }
+                }
+            }
+    }
+
+    fun getAllVoucher(){
+        viewModelScope.launch {
+            _voucher.emit(Resources.Loading())
+        }
+        firestore.collection("voucher").get()
+            .addOnSuccessListener {
+                val vouchers = it.toObjects(Voucher::class.java)
+                viewModelScope.launch {
+                    _voucher.emit(Resources.Success(vouchers))
+                }
+            }
+            .addOnFailureListener {
+                viewModelScope.launch {
+                    _voucher.emit(Resources.Error(it.message.toString()))
                 }
             }
     }

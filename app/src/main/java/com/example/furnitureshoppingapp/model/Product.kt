@@ -17,14 +17,3 @@ data class Product (
 ): Parcelable {
     constructor(): this("0", "", "", 0f, images = emptyList())
 }
-
-//      055947
-//        E4CBAD
-//        B4916C
-//      A9907E
-//      F3DEBA
-//      ABC4AA
-//          808080
-//          DBDBDB
-//      7D4C28
-//      325452

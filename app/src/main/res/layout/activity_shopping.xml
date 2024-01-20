@@ -8,7 +8,6 @@
     tools:context=".activity.ShoppingActivity"
     android:orientation="vertical">
 
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/shopping_nav_host"
         android:layout_width="match_parent"

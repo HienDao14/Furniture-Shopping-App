@@ -68,6 +68,9 @@ class CartAdapter: RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
         holder.binding.ivSubtract.setOnClickListener {
             onDecreaseClick?.invoke(current)
         }
+        holder.binding.ivDelete.setOnClickListener {
+            onDeleteClick?.invoke(current)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -77,4 +80,5 @@ class CartAdapter: RecyclerView.Adapter<CartAdapter.CartViewHolder>() {
     var onProductClick: ((CartProduct) -> Unit)?= null
     var onIncreaseClick: ((CartProduct) -> Unit)?= null
     var onDecreaseClick: ((CartProduct) -> Unit)?= null
+    var onDeleteClick: ((CartProduct) -> Unit)?= null
 }
