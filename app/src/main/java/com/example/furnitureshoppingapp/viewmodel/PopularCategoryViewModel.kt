@@ -1,16 +1,21 @@
 package com.example.furnitureshoppingapp.viewmodel
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.furnitureshoppingapp.model.Product
+import com.example.furnitureshoppingapp.model.location.Province
 import com.example.furnitureshoppingapp.resources.Resources
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.Query
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.json.Json
 import javax.inject.Inject
 
 @HiltViewModel
@@ -96,6 +101,7 @@ class PopularCategoryViewModel @Inject constructor(
                 }
             }
     }
+
 }
 
 internal data class PagingInfo(

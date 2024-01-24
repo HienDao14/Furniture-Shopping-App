@@ -50,4 +50,26 @@
     <string name="color">Color:</string>
     <string name="empty_cart_message">Your cart is empty!\nLook like you haven\'t added anything to your cart yet!</string>
     <string name="add_all_to_cart">Add all to my cart</string>
+    <string name="new_address">New Address</string>
+    <string name="contact">Contact</string>
+    <string name="full_name">Full name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="location">Location</string>
+    <string name="address">Address</string>
+    <string name="district">District</string>
+    <string name="province">Province</string>
+    <string name="ward">Ward</string>
+    <string name="save_address">Save address</string>
+    <string name="addition">Additional Info </string>
+    <string name="addition_title">Additional Info (not required)</string>
+    <string name="address_title">Address Title</string>
+    <string name="work_space">Work Space</string>
+    <string name="city">City</string>
+    <string name="notification">Notification</string>
+    <string name="submit">Submit Order</string>
+    <string name="delivery">Delivery</string>
+    <string name="order">Order</string>
+    <string name="payment_method">Payment method</string>
+    <string name="payment_detail">We do not support virtual payments. You can pay when you receive your order.\nApologies for the inconvenience.</string>
+    <string name="your_products">Your products</string>
 </resources>

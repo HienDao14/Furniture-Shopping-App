@@ -48,6 +48,9 @@ class BestDealAdapter(val onClick: (Product) -> Unit): RecyclerView.Adapter<Best
         holder.itemView.setOnClickListener {
             onClick(current)
         }
+        holder.binding.btnShowDetails.setOnClickListener {
+            onClick(current)
+        }
     }
 
     override fun getItemCount(): Int {

@@ -6,7 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.ActivityNavigatorExtras
+import androidx.navigation.NavOptions
+import androidx.navigation.NavOptionsBuilder
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import com.example.furnitureshoppingapp.R
 import com.example.furnitureshoppingapp.adapter.HomeViewPagerAdapter
 import com.example.furnitureshoppingapp.databinding.FragmentHomeBinding
@@ -69,7 +73,8 @@ class HomeFragment : Fragment() {
             true
         }
         binding.homeTopAppBar.setNavigationOnClickListener {
-            findNavController().navigate(R.id.action_homeFragment_to_searchFragment)
+            val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+            findNavController().navigate(action)
         }
     }
 }

@@ -14,7 +14,7 @@ object Constants {
     const val INTRODUCTION_KEY = "Introduction key"
 
     fun showTopSnackbar(message: String, view: View, resources: Resources) {
-        val snackbar = Snackbar.make(view, message, Snackbar.LENGTH_SHORT)
+        val snackbar = Snackbar.make(view, message, 20)
         val view = snackbar.view
         val params = view.layoutParams as FrameLayout.LayoutParams
         params.gravity = Gravity.TOP
