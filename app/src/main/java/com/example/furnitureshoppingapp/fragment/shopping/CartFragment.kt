@@ -10,6 +10,9 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavOptions
+import androidx.navigation.NavOptionsBuilder
+import androidx.navigation.Navigator
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.furnitureshoppingapp.R
@@ -124,21 +127,24 @@ class CartFragment : Fragment() {
                 if(voucherText.lowercase() == voucher.text.lowercase()){
                     binding.tvDiscountApply.visibility = View.VISIBLE
                     binding.tvDiscountApply.text = "Apply voucher successfully!!!\nYou save ${voucher.discount} ${voucher.unit} for your bill!!!"
-                    var price = totalPrice
                     if(voucher.unit == "%"){
-                        price -= price * voucher.discount / 100
+                        totalPrice -= totalPrice * voucher.discount / 100
                     } else {
-                        price -= voucher.discount
-                        if(price < 0) price = 0f
+                        totalPrice -= voucher.discount
+                        if(totalPrice < 0) totalPrice = 0f
                     }
-                    val textTotal = String.format("%.2f", price)
-                    binding.tvTotalPrice.text = "$ $textTotal"
+                    val textTotal ="$ " + String.format("%.1f", totalPrice)
+                    binding.tvTotalPrice.text = textTotal
                     showTopSnackbar("Your voucher added successfully!!!", requireView(), resources)
                     return@setOnClickListener
                 }
             }
             binding.tvDiscountApply.visibility = View.GONE
             showTopSnackbar("Your voucher is not available or is outdated", requireView(), resources)
+        }
+        binding.btnCheckOut.setOnClickListener {
+            val action = CartFragmentDirections.actionCartFragmentToBillingFragment(totalPrice)
+            findNavController().navigate(action)
         }
     }
 

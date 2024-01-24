@@ -28,6 +28,12 @@
         <action
             android:id="@+id/action_cartFragment_to_detailProductFragment"
             app:destination="@id/detailProductFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_billingFragment"
+            app:destination="@id/billingFragment" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -63,5 +69,27 @@
         <argument
             android:name="product"
             app:argType="com.example.furnitureshoppingapp.model.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.AddAddressFragment"
+        android:label="fragment_add_address"
+        tools:layout="@layout/fragment_add_address" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/billingFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.BillingFragment"
+        android:label="fragment_billing"
+        tools:layout="@layout/fragment_billing" >
+        <action
+            android:id="@+id/action_billingFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+        <argument
+            android:name="totalPrice"
+            app:argType="float" />
     </fragment>
 </navigation>

@@ -6,15 +6,15 @@
         android:title="@string/home"
         app:showAsAction="ifRoom"/>
 
-    <item android:id="@+id/searchFragment"
-        android:icon="@drawable/ri_search_2_line"
-        android:title="@string/search"
-        app:showAsAction="ifRoom"/>
-
     <item android:id="@+id/favoriteFragment"
         android:icon="@drawable/marker_1"
         app:showAsAction="ifRoom"
         android:title="@string/favorite"/>
+
+    <item android:id="@+id/notificationFragment"
+        android:icon="@drawable/bell"
+        android:title="@string/notification"
+        app:showAsAction="ifRoom"/>
 
     <item android:id="@+id/profileFragment"
         android:icon="@drawable/bi_person"

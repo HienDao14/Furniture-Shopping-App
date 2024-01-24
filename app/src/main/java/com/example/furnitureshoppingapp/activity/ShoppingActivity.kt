@@ -38,9 +38,8 @@ class ShoppingActivity : AppCompatActivity() {
                 destination: NavDestination,
                 arguments: Bundle?
             ) {
-                if(destination.label == "fragment_detail_product"){
-                    binding.bottomNav.visibility = View.GONE
-                } else if(destination.label == "fragment_cart"){
+                if(destination.label == "fragment_detail_product" || destination.label == "fragment_cart"
+                    || destination.label == "fragment_search" || destination.label == "fragment_billing"){
                     binding.bottomNav.visibility = View.GONE
                 }
                 else{
