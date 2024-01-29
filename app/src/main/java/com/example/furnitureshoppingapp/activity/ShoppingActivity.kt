@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
+import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
@@ -20,6 +21,7 @@ class ShoppingActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         binding = ActivityShoppingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -39,7 +41,8 @@ class ShoppingActivity : AppCompatActivity() {
                 arguments: Bundle?
             ) {
                 if(destination.label == "fragment_detail_product" || destination.label == "fragment_cart"
-                    || destination.label == "fragment_search" || destination.label == "fragment_billing"){
+                    || destination.label == "fragment_search" || destination.label == "fragment_billing"
+                    || destination.label == "fragment_success"){
                     binding.bottomNav.visibility = View.GONE
                 }
                 else{

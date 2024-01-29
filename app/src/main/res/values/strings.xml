@@ -72,4 +72,12 @@
     <string name="payment_method">Payment method</string>
     <string name="payment_detail">We do not support virtual payments. You can pay when you receive your order.\nApologies for the inconvenience.</string>
     <string name="your_products">Your products</string>
+    <string name="log_out">Log out</string>
+    <string name="my_order">My orders</string>
+    <string name="shipping_address">Shipping Address</string>
+    <string name="payment_method_detail">"We only support paying when receive currently."</string>
+    <string name="use_address">Use as the shipping address</string>
+    <string name="success">Success!!!</string>
+    <string name="congrat">Your order will be delivered soon.\nThank you for choosing our app!</string>
+    <string name="back_to_home">Back to home</string>
 </resources>
