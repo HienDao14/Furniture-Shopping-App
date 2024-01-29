@@ -2,6 +2,7 @@ package com.example.furnitureshoppingapp.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.furnitureshoppingapp.R
@@ -15,6 +16,9 @@ class LoginRegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
         binding = ActivityLoginRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
