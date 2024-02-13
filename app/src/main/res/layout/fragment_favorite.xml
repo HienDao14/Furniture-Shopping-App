@@ -43,7 +43,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_add_all"
         android:layout_width="0dp"
         android:layout_height="50dp"

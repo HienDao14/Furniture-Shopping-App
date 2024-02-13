@@ -113,16 +113,13 @@ class BillingFragment : Fragment() {
             orderViewModel.order.collectLatest {
                 when(it){
                     is Resources.Loading -> {
-                        binding.btnSubmitOrder.startAnimation()
                     }
                     is Resources.Success -> {
-                        binding.btnSubmitOrder.revertAnimation()
                         showTopSnackbar("Ordered successfully", requireView(), resources, 100)
                         val action = BillingFragmentDirections.actionBillingFragmentToSuccessFragment()
                         findNavController().navigate(action)
                     }
                     is Resources.Error -> {
-                        binding.btnSubmitOrder.revertAnimation()
                         Toast.makeText(requireContext(), it.message.toString(), Toast.LENGTH_SHORT).show()
                     }
                     else -> Unit

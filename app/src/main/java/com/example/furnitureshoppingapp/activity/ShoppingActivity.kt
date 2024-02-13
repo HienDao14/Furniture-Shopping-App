@@ -40,13 +40,12 @@ class ShoppingActivity : AppCompatActivity() {
                 destination: NavDestination,
                 arguments: Bundle?
             ) {
-                if(destination.label == "fragment_detail_product" || destination.label == "fragment_cart"
-                    || destination.label == "fragment_search" || destination.label == "fragment_billing"
-                    || destination.label == "fragment_success"){
-                    binding.bottomNav.visibility = View.GONE
-                }
-                else{
+                if (destination.label == "fragment_home" || destination.label == "fragment_favorite"
+                    || destination.label == "fragment_notification" || destination.label == "fragment_profile"
+                ) {
                     binding.bottomNav.visibility = View.VISIBLE
+                } else {
+                    binding.bottomNav.visibility = View.GONE
                     binding.bottomNav.jumpDrawablesToCurrentState()
                 }
             }

@@ -14,7 +14,12 @@ class ShippingAddressAdapter: RecyclerView.Adapter<ShippingAddressAdapter.Shippi
 
     inner class ShippingAddressViewHolder(val binding: ShippingAddressRvItemBinding): RecyclerView.ViewHolder(binding.root){
         fun bindItem(address: Address){
-            
+            binding.tvShippingUserName.text = address.fullName
+            var addressDetail = address.fullName + " " + address.phoneNumber + "\n"
+            addressDetail += address.city + " " + address.district + " " + address.ward + "\n"
+            addressDetail += address.address + "\n"
+            addressDetail += address.additionalInfo
+            binding.tvShippingAddressDetail.text = addressDetail
         }
     }
 
@@ -36,7 +41,8 @@ class ShippingAddressAdapter: RecyclerView.Adapter<ShippingAddressAdapter.Shippi
     }
 
     override fun onBindViewHolder(holder: ShippingAddressViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val current = differ.currentList[position]
+        holder.bindItem(current)
     }
 
     override fun getItemCount(): Int {

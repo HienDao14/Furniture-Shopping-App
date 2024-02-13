@@ -5,8 +5,8 @@
          <item name="colorPrimary">@color/primary</item>
         <item name="android:textColorSecondary">@color/text_secondary</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:windowTranslucentStatus">false</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <style name="Theme.FurnitureShoppingApp" parent="Base.Theme.FurnitureShoppingApp" />
