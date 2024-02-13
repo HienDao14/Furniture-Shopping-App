@@ -56,17 +56,14 @@ class LoginFragment : Fragment() {
             viewModel.login.collect{
                 when(it){
                     is Resources.Loading ->{
-                        binding.btnLogin.startAnimation()
                     }
                     is Resources.Success -> {
-                        binding.btnLogin.revertAnimation()
                         Intent(requireActivity(), ShoppingActivity::class.java).also {intent ->
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                             startActivity(intent)
                         }
                     }
                     is Resources.Error -> {
-                        binding.btnLogin.revertAnimation()
                         Toast.makeText(requireContext(), it.message, Toast.LENGTH_LONG).show()
                     }
                     else ->{

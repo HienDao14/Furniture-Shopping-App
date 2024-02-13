@@ -138,7 +138,7 @@
         android:textAppearance="@style/h3"
         android:textColor="@color/primary"/>
 
-    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_check_out"
         android:layout_width="0dp"
         android:layout_height="50dp"

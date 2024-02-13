@@ -76,7 +76,7 @@
         app:cardElevation="5dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout">
+        app:layout_constraintTop_toBottomOf="@id/img_avatar">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -101,6 +101,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_count_orders"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_secondary"
@@ -150,6 +151,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/tv_count_addresses"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/text_secondary"

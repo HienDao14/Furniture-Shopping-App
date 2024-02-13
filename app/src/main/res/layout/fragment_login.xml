@@ -116,7 +116,7 @@
             android:text="@string/forgot_password"
             android:textColor="@color/primary" />
 
-        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

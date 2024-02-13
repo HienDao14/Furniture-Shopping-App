@@ -93,12 +93,10 @@ class RegisterFragment : Fragment() {
             viewModel.register.collect {
                 when (it) {
                     is Resources.Loading -> {
-                        binding.btnSignUp.startAnimation()
                     }
 
                     is Resources.Success -> {
                         Log.d("test", it.data.toString())
-                        binding.btnSignUp.revertAnimation()
                         Toast.makeText(requireContext(), "Sign-up successful", Toast.LENGTH_LONG).show()
                         val action = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
                         findNavController().navigate(action)
@@ -106,7 +104,6 @@ class RegisterFragment : Fragment() {
 
                     is Resources.Error -> {
                         Log.d("RegisterFragment", it.message.toString())
-                        binding.btnSignUp.revertAnimation()
                     }
 
                     else -> {

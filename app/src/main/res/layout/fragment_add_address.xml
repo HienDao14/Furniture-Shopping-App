@@ -257,7 +257,7 @@
                 android:text="@string/work_space"/>
         </RadioGroup>
 
-        <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_save_address"
             android:layout_width="0dp"
             android:layout_height="50dp"
