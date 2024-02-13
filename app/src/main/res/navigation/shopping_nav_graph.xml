@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/shopping_nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_billingFragment"
+            app:destination="@id/billingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+        <action
+            android:id="@+id/action_favoriteFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_shippingAddressFragment"
+            app:destination="@id/shippingAddressFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_detailProductFragment"
+            app:destination="@id/detailProductFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailProductFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.DetailProductFragment"
+        android:label="fragment_detail_product"
+        tools:layout="@layout/fragment_detail_product" >
+        <argument
+            android:name="product"
+            app:argType="com.example.furnitureshoppingapp.model.Product" />
+    </fragment>
+    <fragment
+        android:id="@+id/addAddressFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.AddAddressFragment"
+        android:label="fragment_add_address"
+        tools:layout="@layout/fragment_add_address" />
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/billingFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.BillingFragment"
+        android:label="fragment_billing"
+        tools:layout="@layout/fragment_billing" >
+        <action
+            android:id="@+id/action_billingFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+        <argument
+            android:name="totalPrice"
+            app:argType="float" />
+        <action
+            android:id="@+id/action_billingFragment_to_successFragment"
+            app:destination="@id/successFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/successFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.SuccessFragment"
+        android:label="fragment_success"
+        tools:layout="@layout/fragment_success" >
+        <action
+            android:id="@+id/action_successFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shippingAddressFragment"
+        android:name="com.example.furnitureshoppingapp.fragment.shopping.ShippingAddressFragment"
+        android:label="fragment_shipping_address"
+        tools:layout="@layout/fragment_shipping_address" >
+        <action
+            android:id="@+id/action_shippingAddressFragment_to_addAddressFragment"
+            app:destination="@id/addAddressFragment" />
+    </fragment>
+</navigation>

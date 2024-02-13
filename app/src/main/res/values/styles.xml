@@ -44,6 +44,36 @@
         <item name="android:fontFamily">@font/nunitosans_regular</item>
     </style>
 
+    <style name="DialogStyle" parent="Theme.Material3.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.Material3.BottomNavigationView">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="itemIconTint">@drawable/bottom_nav_item_background</item>
+        <item name="itemRippleColor">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="rippleColor">@color/white</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorOnSurfaceVariant">@color/disable_button</item>
+    </style>
+
+    <style name="TextAppearance.App.LabelLarge" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/poppins</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TabLayout_selected_text" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/poppins</item>
+        <item name="textAllCaps">false</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
     <dimen name="h4TextSize">30sp</dimen>
     <dimen name="h2TextSize">18sp</dimen>
