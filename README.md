@@ -1,4 +1,43 @@
 # Furniture E-commerce App
+
+## Overview:
+FurnitureECommerceApp is a modern Android application designed for an online furniture store. It allows users to browse, search, and purchase a variety of furniture items. Built using Kotlin, the app provides a seamless shopping experience with a fully declarative UI, efficient state management, and integration with various Android Jetpack libraries.
+
+## Features
+
+- **Product Catalog**: Browse through a wide range of furniture items.
+- **Product Details**: View detailed information about each product.
+- **Shopping Cart**: Add and manage items in the shopping cart.
+- **User Authentication**: Register and log in to manage orders.
+- **Order History**: View past orders and their status.
+- **Payment Integration**: Secure payment gateway integration.
+
+## Prerequisites
+
+- Android Studio Arctic Fox or higher
+- Gradle 7.x or higher
+- Kotlin 1.5.x or higher
+
+## Getting Started
+
+### Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/HienDao14/Furniture-Shopping-App.git
+
+2. **Open the project in Android Studio:**
+
+- Open Android Studio.
+- Click on "Open an existing Android Studio project".
+- Navigate to the cloned repository and open it.
+
+3. **Build the project:**
+
+- Wait for the Gradle build to finish.
+- Resolve any dependencies if prompted.
+
 ## Some screenshots of my app:
 - Login / Register:
 <img src="https://github.com/HienDao14/Furniture-Shopping-App/assets/145284233/f0071fcc-95c2-4ae2-96b4-b1e867f9e939" width="200" height="400"/>
